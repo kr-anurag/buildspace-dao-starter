@@ -149,6 +149,17 @@ const memberList = useMemo(() => {
     if (!address) {
       return;
     }
+    if (error && error.name === "UnsupportedChainIdError") {
+  return (
+    <div className="unsupported-network">
+      <h2>Please connect to Rinkeby</h2>
+      <p>
+        This dapp only works on the Rinkeby network, please switch networks
+        in your connected wallet.
+      </p>
+    </div>
+  );
+}
     return bundleDropModule
       .balanceOf(address, "0")
       .then((balance) => {
@@ -374,7 +385,11 @@ if (!address) {
         {isClaiming ? "Minting..." : "Mint your nft (FREE)"}
       </button>
     </div>
+
+    
   );
+
+  
 };
 
 export default App;
