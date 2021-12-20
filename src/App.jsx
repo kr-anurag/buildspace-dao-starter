@@ -175,7 +175,7 @@ const memberList = useMemo(() => {
         setHasClaimedNFT(false);
         console.error("failed to nft balance", error);
       });
-  }, [address]);
+  }, [address, error]);
 
   if (!address) {
     return (
